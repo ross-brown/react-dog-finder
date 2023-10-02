@@ -7,7 +7,7 @@ import DogList from './DogList';
 
 
 function App() {
-  const [dogData, setDogData] = useState(null);
+  const [dogData, setDogData] = useState([]);
 
   function getDogs(dogs) {
     setDogData(dogs);
@@ -15,11 +15,12 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Dog Finder</h1>
       <BrowserRouter>
-        {/* <Nav /> */}
+        <Nav dogs={dogData.map(dog => dog?.name)}/>
         <Routes>
           <Route element={<DogList dogData={dogData} getDogs={getDogs} />} path="/dogs" />
-          <Route element={<DogDetails />} path="/dogs/:name" />
+          <Route element={<DogDetails dogData={dogData}/>}  path="/dogs/:name" />
           <Route element={<Navigate to="/dogs" />} path="*" />
         </Routes>
       </BrowserRouter>

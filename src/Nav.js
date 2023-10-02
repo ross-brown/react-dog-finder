@@ -1,13 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import "./Nav.css";
 
 function Nav({ dogs }) {
-
-
+  console.log("dogs is ", dogs);
 
   return (
-    <div>
-      {dogs.map(dog => <Link to={`/dogs/${dog}`}>{dog}</Link>)}
+    <div className="Nav">
+      {dogs.map(dog => <NavLink
+                            to={`/dogs/${dog}`}>{dog}</NavLink>)}
     </div>
   );
 }

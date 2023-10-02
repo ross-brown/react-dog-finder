@@ -1,0 +1,11 @@
+.Nav a {
+  text-decoration: none;
+  margin: 30px;
+  color: blue;
+}
+
+.Nav a.active {
+  text-decoration: underline;
+  font-weight: bolder;
+
+}
