@@ -3,12 +3,10 @@ import { NavLink } from "react-router-dom";
 import "./Nav.css";
 
 function Nav({ dogs }) {
-  console.log("dogs is ", dogs);
 
   return (
     <div className="Nav">
-      {dogs.map(dog => <NavLink
-                            to={`/dogs/${dog}`}>{dog}</NavLink>)}
+      {dogs.map(dog => <NavLink to={`/dogs/${dog}`} key={dog}>{dog}</NavLink>)}
     </div>
   );
 }

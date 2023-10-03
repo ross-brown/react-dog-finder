@@ -2,8 +2,14 @@
   text-decoration: none;
 } */
 
+
+.DogList-pic {
+  width: 15rem;
+}
+
 a h3 {
   text-decoration: none;
+  color: black;
 }
 
 a p {

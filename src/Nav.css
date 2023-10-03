@@ -2,6 +2,7 @@
   text-decoration: none;
   margin: 30px;
   color: blue;
+  cursor: pointer;
 }
 
 .Nav a.active {

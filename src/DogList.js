@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./DogList.css"
+import "./DogList.css";
 
 async function fetchDogs() {
   const res = await fetch("http://localhost:5001/dogs");
@@ -10,7 +10,6 @@ async function fetchDogs() {
 
 
 function DogList({ dogData, getDogs }) {
-
   async function getDogData() {
     if (dogData.length === 0) {
       const dogs = await fetchDogs();
@@ -25,15 +24,13 @@ function DogList({ dogData, getDogs }) {
       {dogData.length !== 0
         ? dogData.map(({ name, age, src }) => {
           return (
-            <div className="DogList-dog" key={name}>
+            <div className="DogList-dog" id={name} key={name}>
               <Link to={`/dogs/${name}`}><h3 className="DogList-dog-name">{name}</h3></Link>
               <p>Age: {age}</p>
-              <Link to={`/dogs/${name}`}>
               <img
                 className="DogList-pic"
                 src={`/${src}.jpg`}
                 alt={name} />
-                </Link>
               <hr></hr>
             </div >
           );

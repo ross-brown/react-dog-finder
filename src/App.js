@@ -1,9 +1,9 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom';
 import './App.css';
 import { useState } from 'react';
 import Nav from './Nav';
-import DogDetails from './DogDetails';
 import DogList from './DogList';
+import FilterDogs from './FilterDogs';
 
 
 function App() {
@@ -15,12 +15,17 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Dog Finder</h1>
       <BrowserRouter>
-        <Nav dogs={dogData.map(dog => dog?.name)}/>
+        <Link to="/"><h1>Dog Finder</h1></Link>
+        <Nav dogs={dogData.map(dog => dog?.name)} />
         <Routes>
-          <Route element={<DogList dogData={dogData} getDogs={getDogs} />} path="/dogs" />
-          <Route element={<DogDetails dogData={dogData}/>}  path="/dogs/:name" />
+          <Route element={
+            <DogList
+              dogData={dogData}
+              getDogs={getDogs}
+            />}
+            path="/dogs" />
+          <Route element={<FilterDogs dogData={dogData} />} path="/dogs/:name" />
           <Route element={<Navigate to="/dogs" />} path="*" />
         </Routes>
       </BrowserRouter>

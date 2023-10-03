@@ -1,25 +1,31 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import "./DogDetails.css";
 
-function DogDetails({ dogData }) {
-  console.log("dogData is", dogData);
+function DogDetails({ dog }) {
   const { name } = useParams();
-  const { age, facts, src } = dogData.find(dog => dog.name === name);
 
+  if (!dog) {
+    return <Navigate to="/"/>
+  }
+
+  const { age, facts, src } = dog
 
   return (
     <div className="DogDetails" key={name}>
-              <h3>{name}</h3>
-              <p>Age: {age}</p>
-              <img
-                className="DogDetails-pic"
-                src={`/${src}.jpg`}
-                alt={name} />
-              <ul>
-                {facts.map(fact => <li key={fact}>{fact}</li>)}
-              </ul>
-              <hr></hr>
-            </div >
+      <h3>{name}</h3>
+      <p>Age: {age}</p>
+      <img
+        className="DogDetails-pic"
+        src={`/${src}.jpg`}
+        alt={name} />
+      <h4>Fun Facts about {name}!</h4>
+      <ul className="DogDetails-facts">
+        {facts.map(fact => <li key={fact}>{fact}</li>)}
+      </ul>
+      <hr></hr>
+    </div >
   );
 }
 
